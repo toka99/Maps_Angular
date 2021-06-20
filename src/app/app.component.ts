@@ -22,8 +22,14 @@ export class AppComponent implements OnInit {
       );
       let mymap = L.map('map').setView(latLong, 13);
       let search = L.Control.geocoder().addTo(mymap);
+      console.log(search);
       
-      
+    //   mymap.on('search', function (result) {
+    //     L.marker([result.x, result.y]).addTo(mymap)
+    //     console.log(
+    //       `lat: ${result.latitude}, lon: ${result.longitude}`
+    //     );
+    // });
 
       L.tileLayer(
         'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidG9rYWF0dGlhaCIsImEiOiJja3E0aXV4MmMwdnNuMm9rYWhmb2R0cmYwIn0.REEJ6A0E0dhZvRptea7Mng',
@@ -55,9 +61,9 @@ export class AppComponent implements OnInit {
     let desLon = 0;
     let id = navigator.geolocation.watchPosition(
       (position) => {
-        console.log(
-          `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
-        );
+        // console.log(
+        //   `lat: ${position.coords.latitude}, lon: ${position.coords.longitude}`
+        // );
         if (position.coords.latitude === desLat) {
           navigator.geolocation.clearWatch(id);
         }
